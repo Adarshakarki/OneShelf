@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OneShelf</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar glass">
+  <h1>OneShelf</h1>
+
+  <div class="tabs">
+    <button data-type="songs"><i data-lucide="music"></i></button>
+    <button data-type="movies"><i data-lucide="film"></i></button>
+    <button data-type="images"><i data-lucide="image"></i></button>
+    <button data-type="links"><i data-lucide="link"></i></button>
+    <button data-type="notes"><i data-lucide="file-text"></i></button>
+  </div>
+
+  <div class="nav-actions">
+    <button id="searchBtn"><i data-lucide="search"></i></button>
+    <button id="exportBtn"><i data-lucide="download"></i></button>
+    <input type="file" id="importInput" hidden>
+    <button onclick="importInput.click()"><i data-lucide="upload"></i></button>
+    <button id="addBtn"><i data-lucide="plus"></i></button>
+  </div>
+</nav>
+
+<input id="searchInput" class="search hidden" placeholder="Search...">
+
+<main id="grid"></main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box glass">
+    <textarea id="input" placeholder="Paste link or write note..."></textarea>
+    <button id="saveBtn">Save</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
