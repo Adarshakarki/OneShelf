@@ -74,5 +74,4 @@ All data is stored in your browser's `localStorage`. Nothing is sent to any serv
 
 **Smarter Metadata**
 - Automatic re-fetch to keep thumbnails and titles up to date
-
 - AI-powered content summaries and recommendations based on what you save
