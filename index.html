@@ -6,12 +6,12 @@
   <title>OneShelf</title>
   <link rel="icon" href="logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
+  <!-- sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <div class="logo">
@@ -55,11 +55,8 @@
     </nav>
 
     <div class="sidebar-footer">
-      <button class="action-btn" id="importBtn">
-        <i data-lucide="upload"></i><span>Import</span>
-      </button>
-      <button class="action-btn" id="exportBtn">
-        <i data-lucide="download"></i><span>Export</span>
+      <button class="action-btn" id="settingsBtn">
+        <i data-lucide="settings"></i><span>Settings</span>
       </button>
       <input type="file" id="importFile" accept=".json" hidden />
     </div>
@@ -67,6 +64,7 @@
 
   <div class="overlay" id="overlay"></div>
 
+  <!-- main content -->
   <main class="main">
 
     <header class="topbar">
@@ -80,7 +78,8 @@
       <div class="topbar-actions">
         <div class="search-wrap">
           <i data-lucide="search" class="search-icon"></i>
-          <input type="text" class="search-input" id="searchInput" placeholder="Search…" />
+          <input type="text" class="search-input" id="searchInput" placeholder="Search your shelf…" />
+          <kbd class="search-kbd">⌘K</kbd>
         </div>
         <div class="sort-wrap">
           <select class="sort-select" id="sortSelect">
@@ -93,52 +92,6 @@
         </div>
       </div>
     </header>
-
-    <section class="paste-section">
-      <div class="paste-card glass">
-        <div class="paste-tabs">
-          <button class="paste-tab active" data-mode="url">
-            <i data-lucide="link-2"></i> Add URL
-          </button>
-          <button class="paste-tab" data-mode="note">
-            <i data-lucide="file-text"></i> Add Note
-          </button>
-        </div>
-
-        <div class="paste-body" id="urlMode">
-          <div class="paste-inner">
-            <input
-              type="url"
-              id="urlInput"
-              class="url-input"
-              placeholder="Paste any URL — YouTube, IMDB, Spotify, image link…"
-              autocomplete="off"
-              spellcheck="false"
-            />
-            <button class="save-btn" id="saveUrlBtn">
-              <i data-lucide="plus"></i><span>Save</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="paste-body hidden" id="noteMode">
-          <div class="note-inner">
-            <input type="text" id="noteTitleInput" class="note-title-input" placeholder="Title (optional)" />
-            <textarea id="noteBodyInput" class="note-body-input" placeholder="Write your note here…" rows="3"></textarea>
-            <div class="note-actions">
-              <button class="save-btn" id="saveNoteBtn">
-                <i data-lucide="plus"></i><span>Save Note</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="error-msg" id="errorMsg" hidden>
-          <i data-lucide="alert-circle"></i>
-          <span id="errorText"></span>
-        </div>
-      </div>
-    </section>
 
     <div class="section-heading">
       <h2 id="sectionTitle">All Items</h2>
@@ -155,11 +108,12 @@
 
   </main>
 
+  <!-- modals -->
   <div class="modal-backdrop" id="modalBackdrop" hidden>
     <div class="modal glass" id="modal">
       <button class="modal-close" id="modalClose"><i data-lucide="x"></i></button>
       <div class="modal-thumb-wrap" id="modalThumbWrap"></div>
-      <div class="modal-body">
+      <div class="modal-content-bar" id="modalContentBar">
         <div class="modal-badge" id="modalBadge"></div>
         <h2 class="modal-title" id="modalTitle"></h2>
         <p class="modal-desc" id="modalDesc"></p>
@@ -175,6 +129,14 @@
     </div>
   </div>
 
+  <!-- actions -->
+  <button class="fab" id="addBtn" title="Add New">
+    <i data-lucide="plus"></i>
+  </button>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- logic -->
   <script src="app.js"></script>
 </body>
 </html>
